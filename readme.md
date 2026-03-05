@@ -45,6 +45,8 @@ The project is currently in a *"proof-of-concept/barebones"* functional state. C
 2. Create your feature branch.
 3. Submit a Pull Request.
 
+See our [Contributors List](CONTRIBUTORS.md) for the amazing people helping this project!
+
 ## License & Terms
 This project is licensed under **CC BY-NC-SA 4.0**.
 

@@ -68,6 +68,11 @@
       <HintPath>deps\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include=".github\ISSUE_TEMPLATE\bug_report.md" />
+    <Content Include=".github\ISSUE_TEMPLATE\feature_request.md" />
+  </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy /Y /D &quot;$(TargetPath)&quot; &quot;D:\SteamLibrary\steamapps\common\White Knuckle\BepInEx\plugins\WKTranslator\&quot;" />
