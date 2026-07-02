@@ -120,16 +120,19 @@ public class Plugin : BaseUnityPlugin
     {
         Translations.Clear();
         DynamicTranslation.Clear();
+        SampleTranslation.Clear();
         TextureRegistry.Clear();
         AudioRegistry.Clear();
     }
 
     // Looks up a translation for `original`, first as an exact match, then
-    // falling back to placeholder-based ({0}, {1}, ...) whole-string matching.
+    // falling back to placeholder-based ({0}, {1}, ...) whole-string matching,
+    // then finally to partial/sample-based matching (sample:, sampleG:, sampleR:).
     public static bool TryGetTranslation(string original, out string translated)
     {
         if (Translations.TryGetValue(original, out translated)) return true;
-        return DynamicTranslation.TryTranslate(original, out translated);
+        if (DynamicTranslation.TryTranslate(original, out translated)) return true;
+        return SampleTranslation.TryTranslate(original, out translated);
     }
 
     private void LoadTranslations(string filepath, TranslationConfig config)
@@ -140,6 +143,7 @@ public class Plugin : BaseUnityPlugin
 
         Translations.Clear();
         DynamicTranslation.Clear();
+        SampleTranslation.Clear();
 
         if (!File.Exists(file))
         {
@@ -157,8 +161,10 @@ public class Plugin : BaseUnityPlugin
                 ProcessTranslationToken(property.Name, property.Value);
             }
 
-            LogManager.Info($"Loaded {Translations.Count} exact, {DynamicTranslation.Count} template " +
-                             $"translations from {Path.GetFileName(file)}");
+            SampleTranslation.FinalizeRegistration();
+
+            LogManager.Info($"Loaded {Translations.Count} exact, {DynamicTranslation.Count} template, " +
+                             $"{SampleTranslation.Count} sample translations from {Path.GetFileName(file)}");
         }
         catch (Exception ex)
         {
@@ -173,6 +179,10 @@ public class Plugin : BaseUnityPlugin
     //   "Category": { "Key": "Value", ... } -> recurse (categories can nest arbitrarily deep)
     private void ProcessTranslationToken(string keyName, JToken token)
     {
+        // sample: / sampleG: / sampleR: entries are partial/substring matches
+        // (see SampleTranslation), handled separately from exact/{n} matching.
+        if (SampleTranslation.TryRegisterToken(keyName, token)) return;
+
         if (token.Type == JTokenType.Object)
         {
             // Format: "CategoryName": { "Original": "Translated", ... }
