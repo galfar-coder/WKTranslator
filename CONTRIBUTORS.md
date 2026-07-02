@@ -9,8 +9,7 @@ Thanks to all the amazing people who have helped make **WKTranslator** better! T
 
 ## Code & Technical Contributors
 
-*such empty here*
-
+* [achelia](https://github.com/msachelia) - *Expanded JSON Format & A lot of amazing stuff*
 ---
 
 ## ❤️ How to get on this list
