@@ -10,6 +10,7 @@ Thanks to all the amazing people who have helped make **WKTranslator** better! T
 ## Code & Technical Contributors
 
 * [achelia](https://github.com/msachelia) - *Expanded JSON Format & A lot of amazing stuff*
+*"it takes a strong climber to deny the handhold right in front of him"*
 ---
 
 ## ❤️ How to get on this list
