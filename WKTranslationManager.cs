@@ -417,11 +417,19 @@ public class WKTranslationManager : MonoBehaviour
         {
             if (__result is null) return;
             Texture2D texture;
-            if (!Plugin.TextureRegistry.ContainsKey("_ALL"))
-                if (!Plugin.TextureRegistry.TryGetValue(__result.name, out texture)) return;
-
-            texture = Plugin.TextureRegistry.First(p => p.Key == "_ALL").Value;
-            __result = texture;
+            if (Plugin.TextureRegistry.TryGetValue("_ALL", out var allTex))
+            {
+                __result = allTex;
+            }
+            else
+            {
+                if (Plugin.TextureRegistry.TryGetValue(__result.name, out texture))
+                {
+                    if (texture)
+                        __result = texture;
+                }
+            }
+            
         }
     }
 
