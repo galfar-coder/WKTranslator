@@ -1,7 +1,12 @@
 # WKTranslator
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
+[![Translation status](https://translate.galfar.net/widget/white-knuckle-wktranslator/language-badge.svg?threshold=0)](https://translate.galfar.net/engage/white-knuckle-wktranslator/)
+[![Translation status](https://translate.galfar.net/widget/white-knuckle-wktranslator/svg-badge.svg?capitalize=1)](https://translate.galfar.net/engage/white-knuckle-wktranslator/)
+<br>
+[![Translation status](https://translate.galfar.net/widget/white-knuckle-wktranslator/languages/multi-auto.svg)](https://translate.galfar.net/engage/white-knuckle-wktranslator/)
+<br>
+<br>
 A localization and translation framework for **White Knuckle**.
 
 ## Project Overview
