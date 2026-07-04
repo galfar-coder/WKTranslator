@@ -66,6 +66,12 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>$(WhiteKnuckleDir)White Knuckle_Data/Managed/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="WKLib">
+      <HintPath>$(WhiteKnuckleDir)BepInEx/plugins/WKLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ImuiBepInEx">
+      <HintPath>$(WhiteKnuckleDir)BepInEx/plugins/ImuiBepInEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   
   <ItemGroup>

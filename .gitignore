@@ -2,6 +2,6 @@
 .idea/
 /bin/
 /obj/
-
-/Folder.DotSettings.user
 /.vs
+/Folder.DotSettings.user
+/WKTranslator.csproj.user

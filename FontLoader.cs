@@ -25,7 +25,8 @@ public static class FontLoader
 
         // Asset bundles take priority over a loose .ttf/.otf if both are present,
         // since a bundle can carry multiple pre-baked fonts (and legacy Font support).
-        if (TryLoadFromBundle(folderPath))
+        // The bundle must sit next to the DLL, not in the translation folder.
+        if (TryLoadFromBundle())
         {
             return;
         }
@@ -33,9 +34,10 @@ public static class FontLoader
         LoadFromTrueTypeFile(folderPath);
     }
 
-    private static bool TryLoadFromBundle(string folderPath)
+    private static bool TryLoadFromBundle()
     {
-        string bundlePath = Path.Combine(folderPath, "customfonts");
+        string pluginDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        string bundlePath = Path.Combine(pluginDir, "customfonts");
         if (!File.Exists(bundlePath)) return false;
 
         var bundle = AssetBundle.LoadFromFile(bundlePath);
